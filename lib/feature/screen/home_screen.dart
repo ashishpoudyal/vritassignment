@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
+                  height: MediaQuery.of(context).size.height * 0.01,
                 ),
                 TextFormField(
                   controller: urlTextEditingController,
@@ -57,7 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
                       log(urlTextEditingController.text);
-                      provider.genetateShortUrl(urlTextEditingController.text);
+                      provider.genetateShortUrl(
+                          urlTextEditingController.text, context);
                     }
                   },
                   child: Container(

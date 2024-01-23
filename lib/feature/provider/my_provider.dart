@@ -8,9 +8,7 @@ class MyProviderNotifier extends ChangeNotifier {
   ShortUrlRepo _shortUrlRepo = ShortUrlRepo();
   ShortenUrlModel? shortenUrlModel;
   bool isLoading = false;
-  genetateShortUrl(
-    final String url,
-  ) async {
+  genetateShortUrl(final String url, BuildContext context) async {
     isLoading = true;
     shortenUrlModel = null;
     notifyListeners();
@@ -23,6 +21,13 @@ class MyProviderNotifier extends ChangeNotifier {
     response.fold((l) {
       log(
         "Error" + l.message.toString(),
+      );
+      return ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Text copied to clipboard: ${l.message}',
+          ),
+        ),
       );
     }, (r) {
       shortenUrlModel = r;

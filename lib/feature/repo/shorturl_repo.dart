@@ -22,9 +22,9 @@ class ShortUrlRepo {
         data: body,
       );
       return Right(shortenUrlModelFromJson(response.toString()));
-    } catch (e) {
+    } on DioException catch (e) {
       return left(Failure(
-        e.toString(),
+        e.message.toString(),
       ));
     }
   }

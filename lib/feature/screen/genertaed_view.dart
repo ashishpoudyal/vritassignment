@@ -71,13 +71,13 @@ class GeneratedView extends StatelessWidget {
       },
     );
   }
+}
 
-  void _copyToClipboard(textToCopy, BuildContext context) {
-    Clipboard.setData(ClipboardData(text: textToCopy));
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Text copied to clipboard: $textToCopy'),
-      ),
-    );
-  }
+void _copyToClipboard(textToCopy, BuildContext context) {
+  Clipboard.setData(ClipboardData(text: textToCopy));
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text('Text copied to clipboard: $textToCopy'),
+    ),
+  );
 }
